@@ -1,0 +1,45 @@
+{
+  "cli": {
+    "version": ">= 0.38.1",
+    "requireCommit": false
+  },
+  "build": {
+    "base": {
+      "android": {
+        "env": {
+          "PLATFORM": "android"
+        }
+      },
+      "ios": {
+        "env": {
+          "PLATFORM": "ios"
+        }
+      },
+      "releaseChannel": "eas-test"
+    },
+    "development": {
+      "extends": "base",
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": {
+        "simulator": true,
+        "buildConfiguration": "Debug",
+        "cocoapods": "1.11.2"
+      },
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease",
+        "distribution": "internal",
+        "withoutCredentials": true
+      },
+      "env": {
+        "ENVIRONMENT": "development"
+      }
+    },
+    "preview": {
+      "extends": "base",
+      "developmentClient": true,
+      "distribution": "internal"
+    }
+  }
+}
